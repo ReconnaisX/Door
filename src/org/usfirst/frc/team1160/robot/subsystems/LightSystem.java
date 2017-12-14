@@ -29,6 +29,16 @@ public class LightSystem extends Subsystem implements RobotMap {
 		}
 		return instance;
 	}
+	public void lightOn()
+	{
+		solenoidOne.light();
+		solenoidTwo.light();
+	}
+	public void lightOff()
+	{
+		solenoidOne.dark();
+		solenoidOne.dark();
+	}
 	public void startTime()
 	{
 		time.reset();

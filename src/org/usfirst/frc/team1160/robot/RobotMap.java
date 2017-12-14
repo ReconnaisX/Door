@@ -9,7 +9,7 @@ package org.usfirst.frc.team1160.robot;
 public interface RobotMap {
 	
 	public static final int PCM = 0;
-	public static final int TALON = 1;
+	public static final int JAGUAR = 0;
 	public static final int portOne = 0;
 	public static final int portTwo = 1;
 	// For example to map the left and right motors, you could define the

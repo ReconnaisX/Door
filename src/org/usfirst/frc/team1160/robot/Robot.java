@@ -8,8 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1160.robot.commands.ExampleCommand;
-import org.usfirst.frc.team1160.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team1160.robot.commands.run;
+import org.usfirst.frc.team1160.robot.subsystems.LightSystem;
+import org.usfirst.frc.team1160.robot.subsystems.SingleJaguar;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,8 +21,8 @@ import org.usfirst.frc.team1160.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi;
+	public static LightSystem system;
+	public static SingleJaguar jaguar;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -32,10 +33,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+		system = LightSystem.getInstance();
+		jaguar = SingleJaguar.getInstance();
 	}
 
 	/**
@@ -66,7 +65,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = new run();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
